@@ -5,6 +5,7 @@ import { Home } from "./pages/Home";
 import { LoginPage } from "./pages/LoginPage";
 import { PlaylistAnalyzePage } from "./pages/PlaylistAnalyzePage";
 import { useAuth } from "./context/AuthContext";
+import { Toaster } from "sonner";
 
 function App() {
   const { isAuthenticated } = useAuth();
@@ -12,6 +13,7 @@ function App() {
   return (
     <Router>
       {isAuthenticated && <Navbar />}
+      <Toaster richColors position="top-center" />
       <Routes>
         {/* Public Routes */}
         <Route path="/register" element={!isAuthenticated ? <RegisterPage /> : <Navigate to="/" />} />
